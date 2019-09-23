@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ums-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:9949
+        namespace: b5fb73c5-32d3-4c33-bdeb-dbabbcfa0c41
+        group: dev
+        file-extension: yml  # 默认找服务名.properties文件
