@@ -7,6 +7,9 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.entity.SkuLadderEntity;
+import com.atguigu.gmall.sms.service.SkuLadderService;
+import com.atguigu.gmall.sms.vo.SkuSaleVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,14 @@ import com.atguigu.gmall.sms.service.SkuBoundsService;
 public class SkuBoundsController {
     @Autowired
     private SkuBoundsService skuBoundsService;
+    @Autowired
+    private SkuLadderService skuLadderService;
+    @PostMapping("skusale/save")
+    public Resp<Object> saveSale(@RequestBody SkuSaleVO skuSaleVO){
+        //skuLadderService.saveSale(skuSaleVO);
+        skuBoundsService.saveSale(skuSaleVO);
+        return Resp.ok(null);
+    }
 
     /**
      * 列表

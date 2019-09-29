@@ -1,7 +1,16 @@
 package com.atguigu.gmall.sms.service.impl;
 
+import com.atguigu.gmall.sms.dao.SkuFullReductionDao;
+import com.atguigu.gmall.sms.entity.SkuBoundsEntity;
+import com.atguigu.gmall.sms.vo.SkuSaleVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,10 +21,16 @@ import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.gmall.sms.dao.SkuLadderDao;
 import com.atguigu.gmall.sms.entity.SkuLadderEntity;
 import com.atguigu.gmall.sms.service.SkuLadderService;
+import org.springframework.util.CollectionUtils;
 
 
 @Service("skuLadderService")
 public class SkuLadderServiceImpl extends ServiceImpl<SkuLadderDao, SkuLadderEntity> implements SkuLadderService {
+    @Autowired
+    private SkuLadderDao skuLadderDao;
+    @Autowired
+    private SkuFullReductionDao skuFullReductionDao;
+
 
     @Override
     public PageVo queryPage(QueryCondition params) {
@@ -27,4 +42,8 @@ public class SkuLadderServiceImpl extends ServiceImpl<SkuLadderDao, SkuLadderEnt
         return new PageVo(page);
     }
 
+
+
+
 }
+
