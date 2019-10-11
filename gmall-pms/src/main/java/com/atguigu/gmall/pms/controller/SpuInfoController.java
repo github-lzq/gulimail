@@ -6,12 +6,14 @@ import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
+import com.atguigu.core.bean.Query;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.pms.entity.SkuInfoEntity;
 import com.atguigu.gmall.pms.service.SkuInfoService;
 import com.atguigu.gmall.pms.vo.SpuInfoVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,12 @@ public class SpuInfoController {
         return Resp.ok(pageVo);
     }
 
+@GetMapping("page")
+public Resp<PageVo> querySpuByPageAndSale(QueryCondition condition){
+        IPage<SpuInfoEntity> page =this.spuInfoService.page(new Query<SpuInfoEntity>().getPage(condition),
+                new QueryWrapper<SpuInfoEntity>().eq("publish_status",1));
+        return Resp.ok(new PageVo(page));
+}
     /**
      * 列表
      */

@@ -21,5 +21,7 @@ public interface SpuInfoService extends IService<SpuInfoEntity> {
     PageVo querySpuByKeyPage(QueryCondition condition, Long catId);
 
     void savaSpuWithSku(SpuInfoVO spuInfo);
+
+
 }
 

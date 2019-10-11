@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: index-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:9949
+        namespace: 407c6619-b811-41c3-aa93-d2d9ff3bf1c2
+        group: dev
+        file-extension: yml  # 默认找服务名.properties文件
